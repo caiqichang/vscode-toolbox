@@ -6,14 +6,28 @@
     <link rel="stylesheet" href="${extensionPath}/static/css/util.css?v=${version}">
 
     <style>
-        
+        .button-item {
+            width: 80px;
+        }
     </style>
 </head>
 
 <body>
     <div id="app" v-cloak class="app">
-        <div>JSON Formatter</div>
-        
+        <div style="display: flex;margin-top: 10px;">
+            <div style="width: calc(100% - 100px);">
+                <vscode-text-area class="textArea" v-model="state.jsonText" style="width: 100%;" rows="30"></vscode-text-area>
+            </div>
+            <div style="margin-left: 10px;">
+                <div>
+                    <vscode-button @click="formatAction" class="button-item">Format</vscode-button>
+                </div>
+                <div style="margin-top: 10px;">
+                    <vscode-button @click="zipAction" class="button-item">Compress</vscode-button>
+                </div>
+            </div>
+        </div>
+        <div>{{ state.message }}</div>
     </div>
 
     <script type="module" src="${extensionPath}/node_modules/@vscode/webview-ui-toolkit/dist/toolkit.min.js?v=${version}"></script>
@@ -28,7 +42,8 @@
             data() {
                 return {
                     state: {
-                        text: "",
+                        jsonText: "",
+                        message: "",
                     },
                 }
             },
@@ -49,6 +64,26 @@
                 },
                 setState() {
                     vscode.setState(copy(this.state))
+                },
+                formatAction() {
+                    this.state.message = ""
+                    if (this.state.jsonText) {
+                        try {
+                            this.state.jsonText = JSON.stringify(JSON.parse(this.state.jsonText), null, 4)
+                        } catch (error) {
+                            this.state.message = error
+                        }
+                    }
+                },
+                zipAction() {
+                    this.state.message = ""
+                    if (this.state.jsonText) {
+                        try {
+                            this.state.jsonText = JSON.stringify(JSON.parse(this.state.jsonText))
+                        } catch (error) {
+                            this.state.message = error
+                        }
+                    }
                 },
             }
         })
