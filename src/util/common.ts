@@ -1,6 +1,6 @@
 import vscode from "vscode"
 import { App } from "../util/app"
-import * as fileUtil from "../util/file-util"
+import * as fileUtil from "./file_util"
 
 const getEditorSelection = (): string => {
     return vscode.window.activeTextEditor?.document.getText(vscode.window.activeTextEditor?.selection) ?? ""
@@ -64,6 +64,10 @@ const createWebviewUri = (webviewPanel: vscode.WebviewPanel, subpath: string): v
     return webviewPanel.webview.asWebviewUri(createUri(subpath))
 }
 
+const createWebviewViewUri = (webviewView: vscode.WebviewView, subpath: string): vscode.Uri => {
+    return webviewView.webview.asWebviewUri(createUri(subpath))
+}
+
 const createUri = (subpath: string): vscode.Uri => {
     return vscode.Uri.file(`${App.instance().getContext()?.extensionPath ?? ""}${subpath}`)
 }
@@ -96,4 +100,5 @@ export {
     createWebviewUri,
     createUri,
     exportToFile,
+    createWebviewViewUri,
 }

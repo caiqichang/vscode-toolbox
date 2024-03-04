@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="${extensionPath}/node_modules/@vscode/codicons/dist/codicon.css?v=${version}">
+    <link rel="stylesheet" href="${extensionPath}/static/css/util.css?v=${version}">
+
+    <style>
+        .button-item {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak class="app">
+        <template v-for="i in actionList" :key="i">
+            <vscode-button class="button-item" @click="doAction">{{ i }}</vscode-button>
+        </template>
+    </div>
+
+    <script type="module" src="${extensionPath}/node_modules/@vscode/webview-ui-toolkit/dist/toolkit.min.js?v=${version}"></script>
+    <script src="${extensionPath}/node_modules/vue/dist/vue.global.prod.js?v=${version}"></script>
+    <script src="${extensionPath}/static/js/util.js?v=${version}"></script>
+    <script>
+        "use strict"
+
+        const vscode = acquireVsCodeApi()
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    actionList: [
+                        "JSON Formatter",
+                        "Regular Expression Test"
+                    ],
+                    state: {
+
+                    },
+                }
+            },
+            watch: {
+                state: {
+                    deep: true,
+                    handler() {
+                        this.setState()
+                    }
+                }
+            },
+            methods: {
+                getState() {
+                    let state = vscode.getState()
+                    if (state) {
+                        this.state = copy(state)
+                    }
+                },
+                setState() {
+                    vscode.setState(copy(this.state))
+                },
+                doAction(event) {
+                    vscode.postMessage(event.target.innerHTML)
+                },
+            }
+        })
+
+        app.config.compilerOptions.isCustomElement = tag => tag.startsWith("vscode-")
+
+        const appInstance = app.mount("#app")
+
+    </script>
+</body>
+
+</html>

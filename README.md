@@ -8,12 +8,12 @@ or
 [OpenVSX](https://open-vsx.org/extension/caiqichang/vscode-toolbox)
 
 ## Features
-
-todo
+- JSON Formatter
+- Regular Expression Test
 
 ## Usage
 
-todo
+todo: a screenshot here
 
 [Back to top](#features)
 

@@ -5,7 +5,7 @@
     "publisher": "caiqichang",
     "version": "1.0.0",
     "engines": {
-        "vscode": "^1.85.0"
+        "vscode": "^1.87.0"
     },
     "categories": [
         "Other"
@@ -31,6 +31,26 @@
     "activationEvents": [
         "onStartupFinished"
     ],
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "toolbox_bar",
+                    "title": "Toolbox",
+                    "icon": "resources/logo.png"
+                }
+            ]
+        },
+        "views": {
+            "toolbox_bar": [
+                {
+                    "id": "toolbox_bar_view",
+                    "name": "Tools",
+                    "type": "webview"
+                }
+            ]
+        }
+    },
     "scripts": {
         "prepackage": "node script/pre-package.js && npm run compile",
         "package": "npx --package vsce vsce package -o build/",
@@ -38,13 +58,13 @@
         "watch": "tsc --watch --project ./"
     },
     "devDependencies": {
-        "@types/node": "^20.11.5",
-        "@types/vscode": "^1.85.0",
+        "@types/node": "^20.11.24",
+        "@types/vscode": "^1.87.0",
         "typescript": "^5.3.3"
     },
     "dependencies": {
         "@vscode/codicons": "^0.0.35",
         "@vscode/webview-ui-toolkit": "^1.4.0",
-        "vue": "^3.4.15"
+        "vue": "^3.4.21"
     }
 }
