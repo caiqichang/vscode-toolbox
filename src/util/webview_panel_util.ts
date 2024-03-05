@@ -8,6 +8,7 @@ const initWebviewPanel = (id: string, title: string, htmlPath: string) => {
     panel.webview.html = fileUtil.readExtensionFile(htmlPath).toString()
         .replaceAll("${extensionPath}", common.createWebviewUri(panel, "").toString())
         .replaceAll("${version}", Math.random().toString())
+        .replaceAll("${colorTheme}", common.getColorTheme())
     panel.iconPath = common.createUri("/resources/logo.png")
     return panel
 }

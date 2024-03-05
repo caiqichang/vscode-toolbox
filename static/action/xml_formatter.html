@@ -72,7 +72,7 @@
                 require(["vs/editor/editor.main"], () => {
                     editor = monaco.editor.create(document.getElementById("editor"), {
                         value: "",
-                        language: "json",
+                        language: "html",
                         automaticLayout: true,
                         theme: getEditorColorTheme(colorTheme),
                     })
@@ -99,7 +99,7 @@
                     this.state.message = ""
                     if (this.state.jsonText) {
                         try {
-                            editor.setValue(JSON.stringify(JSON.parse(this.state.jsonText)))
+                            editor.setValue(this.state.jsonText.replace(/\>[\s\r\n]*\</g, "><"))
                         } catch (error) {
                             this.state.message = error
                         }

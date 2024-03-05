@@ -10,6 +10,8 @@ or
 ## Features
 - JSON Formatter
 - Regular Expression Test
+- XML Formatter
+- Base64 Convertor
 
 ## Usage
 

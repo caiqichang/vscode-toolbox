@@ -86,6 +86,15 @@ const exportToFile = (content: string, fileName: string) => {
     })
 }
 
+const getColorTheme = () => {
+    return ({
+        1: "Light",
+        2: "Dark",
+        3: "HighContrast",
+        4: "HighContrastLight",
+    })[vscode.window.activeColorTheme.kind];
+}
+
 export {
     MessageMode,
     getEditorSelection,
@@ -101,4 +110,5 @@ export {
     createUri,
     exportToFile,
     createWebviewViewUri,
+    getColorTheme,
 }

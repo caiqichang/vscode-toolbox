@@ -3,6 +3,7 @@ import { App } from "../util/app"
 import * as fileUtil from "../util/file_util"
 import * as common from "../util/common"
 import json_formatter from "./action/json_formatter"
+import xml_formatter from "./action/xml_formatter"
 
 class ToolboxBarProvider implements vscode.WebviewViewProvider {
 
@@ -27,6 +28,14 @@ class ToolboxBarProvider implements vscode.WebviewViewProvider {
                 }
                 case "Regular Expression Test": {
 
+                    break;
+                }
+                case "XML Formatter": {
+                    xml_formatter.showPanel()
+                    break;
+                }
+                case "Base64 Convertor": {
+                    
                     break;
                 }
             }
