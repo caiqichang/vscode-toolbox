@@ -3,10 +3,10 @@ import { initWebviewPanel } from "../../util/webview_panel_util"
 
 let panel: vscode.WebviewPanel | null = null
 
-const key = "xml_formatter"
+const key = "base64_convertor"
 
 const initPanel = () => {
-    initWebviewPanel(key, "XML Formatter", `static/action/${key}.html`)
+    initWebviewPanel(key, "Base64 Convertor", `static/action/${key}.html`)
 }
 
 const showPanel = () => {

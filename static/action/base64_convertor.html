@@ -6,18 +6,20 @@
     <link rel="stylesheet" href="${extensionPath}/static/css/util.css?v=${version}">
 
     <style>
+        html, body, .app {
+            height: 100%;
+        }
         .button-item {
-            width: 100%;
-            margin-bottom: 10px;
+            width: 80px;
         }
     </style>
 </head>
 
 <body>
     <div id="app" v-cloak class="app">
-        <template v-for="i in actionList" :key="i">
-            <vscode-button class="button-item" @click="doAction">{{ i }}</vscode-button>
-        </template>
+        <div>
+            
+        </div>
     </div>
 
     <script type="module" src="${extensionPath}/node_modules/@vscode/webview-ui-toolkit/dist/toolkit.min.js?v=${version}"></script>
@@ -26,18 +28,16 @@
     <script>
         "use strict"
 
+        const colorTheme = "${colorTheme}"
+
         const app = Vue.createApp({
             data() {
                 return {
-                    actionList: [
-                        "JSON Formatter",
-                        "Regular Expression Test",
-                        "XML Formatter",
-                        "Base64 Convertor",
-                        "JavaScript Playground",
-                    ],
                     state: {
-
+                        sourceText: "",
+                        inputFile: "",
+                        base64Text: "",
+                        message: "",
                     },
                 }
             },
@@ -49,6 +49,9 @@
                     }
                 }
             },
+            created() {
+
+            },
             methods: {
                 getState() {
                     let state = vscode.getState()
@@ -59,9 +62,7 @@
                 setState() {
                     vscode.setState(copy(this.state))
                 },
-                doAction(event) {
-                    vscode.postMessage(event.target.innerHTML)
-                },
+                
             }
         })
 

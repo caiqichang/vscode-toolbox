@@ -12,6 +12,7 @@ or
 - Regular Expression Test
 - XML Formatter
 - Base64 Convertor
+- JavaScript Playground
 
 ## Usage
 

@@ -3,10 +3,10 @@ import { initWebviewPanel } from "../../util/webview_panel_util"
 
 let panel: vscode.WebviewPanel | null = null
 
-const key = "xml_formatter"
+const key = "javascript_playground"
 
 const initPanel = () => {
-    initWebviewPanel(key, "XML Formatter", `static/action/${key}.html`)
+    initWebviewPanel(key, "JavaScript Playground", `static/action/${key}.html`)
 }
 
 const showPanel = () => {

@@ -3,8 +3,10 @@ import { initWebviewPanel } from "../../util/webview_panel_util"
 
 let panel: vscode.WebviewPanel | null = null
 
+const key = "json_formatter"
+
 const initPanel = () => {
-    initWebviewPanel("json_formatter_panel", "JSON Formatter", "static/action/json_formatter.html")
+    initWebviewPanel(key, "JSON Formatter", `static/action/${key}.html`)
 }
 
 const showPanel = () => {

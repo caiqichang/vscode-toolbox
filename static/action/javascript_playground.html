@@ -17,20 +17,17 @@
 
 <body>
     <div id="app" v-cloak class="app">
-        <div style="display: flex;margin-top: 10px;height: calc(100% - 100px);">
+        <div>Open Developer Tools (<code>Ctrl + Shift + I</code>) to see the result in Console.</div>
+        <div style="display: flex;margin-top: 10px;height: calc(100% - 50px);">
             <div style="width: calc(100% - 100px);">
                 <div id="editor" style="width: 100%; height: 100%;border: 1px solid grey;"></div>
             </div>
             <div style="margin-left: 10px;">
                 <div>
-                    <vscode-button @click="formatAction" class="button-item">Format</vscode-button>
-                </div>
-                <div style="margin-top: 10px;">
-                    <vscode-button @click="zipAction" class="button-item">Compress</vscode-button>
+                    <vscode-button @click="runAction" class="button-item">Run</vscode-button>
                 </div>
             </div>
         </div>
-        <div>{{ state.message }}</div>
     </div>
 
     <script type="module" src="${extensionPath}/node_modules/@vscode/webview-ui-toolkit/dist/toolkit.min.js?v=${version}"></script>
@@ -48,8 +45,7 @@
             data() {
                 return {
                     state: {
-                        jsonText: "",
-                        message: "",
+                        codeText: "",
                     },
                 }
             },
@@ -71,13 +67,13 @@
                 require(["vs/editor/editor.main"], () => {
                     editor = monaco.editor.create(document.getElementById("editor"), {
                         value: "",
-                        language: "json",
+                        language: "javascript",
                         automaticLayout: true,
                         theme: getEditorColorTheme(colorTheme),
                     })
 
                     editor.onDidChangeModelContent(() => {
-                        this.state.jsonText = editor.getValue()
+                        this.state.codeText = editor.getValue()
                     })
                 })
             },
@@ -91,18 +87,8 @@
                 setState() {
                     vscode.setState(copy(this.state))
                 },
-                formatAction() {
-                    editor.trigger("editor", "editor.action.formatDocument")
-                },
-                zipAction() {
-                    this.state.message = ""
-                    if (this.state.jsonText) {
-                        try {
-                            editor.setValue(JSON.stringify(JSON.parse(this.state.jsonText)))
-                        } catch (error) {
-                            this.state.message = error
-                        }
-                    }
+                runAction() {
+                    Function(this.state.codeText)()
                 },
             }
         })

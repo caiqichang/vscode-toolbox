@@ -4,6 +4,7 @@ import * as fileUtil from "../util/file_util"
 import * as common from "../util/common"
 import json_formatter from "./action/json_formatter"
 import xml_formatter from "./action/xml_formatter"
+import javascript_playground from "./action/javascript_playground"
 
 class ToolboxBarProvider implements vscode.WebviewViewProvider {
 
@@ -19,6 +20,7 @@ class ToolboxBarProvider implements vscode.WebviewViewProvider {
         webviewView.webview.html = fileUtil.readExtensionFile("static/toolbox_bar.html").toString()
             .replaceAll("${extensionPath}", common.createWebviewViewUri(webviewView, "").toString())
             .replaceAll("${version}", Math.random().toString())
+            .replaceAll("${colorTheme}", common.getColorTheme())
 
         webviewView.webview.onDidReceiveMessage(message => {
             switch (message) {
@@ -27,7 +29,7 @@ class ToolboxBarProvider implements vscode.WebviewViewProvider {
                     break;
                 }
                 case "Regular Expression Test": {
-
+                    
                     break;
                 }
                 case "XML Formatter": {
@@ -36,6 +38,10 @@ class ToolboxBarProvider implements vscode.WebviewViewProvider {
                 }
                 case "Base64 Convertor": {
                     
+                    break;
+                }
+                case "JavaScript Playground": {
+                    javascript_playground.showPanel()
                     break;
                 }
             }
