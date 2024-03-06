@@ -15,7 +15,7 @@ or
 - JavaScript Playground
 
 ## Usage
-Click the icon on activity bar to open ToolBox, than choose function to use.
+Click the icon on activity bar to open ToolBox, than choose functions to use.
 
 todo: a screenshot here
 
