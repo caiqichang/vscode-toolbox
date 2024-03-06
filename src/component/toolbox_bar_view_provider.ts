@@ -5,6 +5,8 @@ import * as common from "../util/common"
 import json_formatter from "./action/json_formatter"
 import xml_formatter from "./action/xml_formatter"
 import javascript_playground from "./action/javascript_playground"
+import base64_convertor from "./action/base64_convertor"
+import regular_expression_test from "./action/regular_expression_test"
 
 class ToolboxBarProvider implements vscode.WebviewViewProvider {
 
@@ -29,7 +31,7 @@ class ToolboxBarProvider implements vscode.WebviewViewProvider {
                     break;
                 }
                 case "Regular Expression Test": {
-                    
+                    regular_expression_test.showPanel()
                     break;
                 }
                 case "XML Formatter": {
@@ -37,7 +39,7 @@ class ToolboxBarProvider implements vscode.WebviewViewProvider {
                     break;
                 }
                 case "Base64 Convertor": {
-                    
+                    base64_convertor.showPanel()
                     break;
                 }
                 case "JavaScript Playground": {

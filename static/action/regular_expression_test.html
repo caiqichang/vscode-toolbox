@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="${extensionPath}/node_modules/@vscode/codicons/dist/codicon.css?v=${version}">
+    <link rel="stylesheet" href="${extensionPath}/static/css/util.css?v=${version}">
+
+    <style>
+        html, body, .app {
+            height: 100%;
+        }
+        .button-item {
+            width: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak class="app">
+        <div>
+            
+        </div>
+    </div>
+
+    <script type="module" src="${extensionPath}/node_modules/@vscode/webview-ui-toolkit/dist/toolkit.min.js?v=${version}"></script>
+    <script src="${extensionPath}/node_modules/vue/dist/vue.global.prod.js?v=${version}"></script>
+    <script src="${extensionPath}/static/js/util.js?v=${version}"></script>
+    <script>
+        "use strict"
+
+        const colorTheme = "${colorTheme}"
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    state: {
+                        sourceText: "",
+                        inputFile: "",
+                        base64Text: "",
+                        message: "",
+                    },
+                }
+            },
+            watch: {
+                state: {
+                    deep: true,
+                    handler() {
+                        this.setState()
+                    }
+                }
+            },
+            created() {
+
+            },
+            methods: {
+                getState() {
+                    let state = vscode.getState()
+                    if (state) {
+                        this.state = copy(state)
+                    }
+                },
+                setState() {
+                    vscode.setState(copy(this.state))
+                },
+                
+            }
+        })
+
+        app.config.compilerOptions.isCustomElement = tag => tag.startsWith("vscode-")
+
+        const appInstance = app.mount("#app")
+
+    </script>
+</body>
+
+</html>
