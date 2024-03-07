@@ -1,22 +1,25 @@
 import vscode from "vscode"
 import { initWebviewPanel } from "../../util/webview_panel_util"
 
-let panel: vscode.WebviewPanel | null = null
+class xml_formatter {
+    private panel: vscode.WebviewPanel | null = null
 
-const key = "xml_formatter"
-
-const initPanel = () => {
-    initWebviewPanel(key, "XML Formatter", `static/action/${key}.html`)
-}
-
-const showPanel = () => {
-    if (panel === null) {
-        initPanel()
-    }else if (!panel.visible) {
-        panel.reveal()
+    private key = "xml_formatter"
+    
+    private initPanel = () => {
+        initWebviewPanel(this.key, "XML Formatter", `static/action/${this.key}.html`)
+    }
+    
+    public showPanel = () => {
+        if (this.panel === null) {
+            this.initPanel()
+        }else if (!this.panel.visible) {
+            this.panel.reveal()
+        }
     }
 }
+const instance = new xml_formatter()
 
 export default {
-    showPanel,
+    showPanel: instance.showPanel,
 }

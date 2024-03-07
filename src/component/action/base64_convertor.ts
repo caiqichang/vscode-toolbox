@@ -1,22 +1,25 @@
 import vscode from "vscode"
 import { initWebviewPanel } from "../../util/webview_panel_util"
 
-let panel: vscode.WebviewPanel | null = null
+class base64_convertor {
+    private panel: vscode.WebviewPanel | null = null
 
-const key = "base64_convertor"
-
-const initPanel = () => {
-    initWebviewPanel(key, "Base64 Convertor", `static/action/${key}.html`)
-}
-
-const showPanel = () => {
-    if (panel === null) {
-        initPanel()
-    }else if (!panel.visible) {
-        panel.reveal()
+    private key = "base64_convertor"
+    
+    private initPanel = () => {
+        initWebviewPanel(this.key, "Base64 Convertor", `static/action/${this.key}.html`)
+    }
+    
+    public showPanel = () => {
+        if (this.panel === null) {
+            this.initPanel()
+        }else if (!this.panel.visible) {
+            this.panel.reveal()
+        }
     }
 }
+const instance = new base64_convertor()
 
 export default {
-    showPanel,
+    showPanel: instance.showPanel,
 }

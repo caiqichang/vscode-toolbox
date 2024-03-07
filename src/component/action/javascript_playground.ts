@@ -1,22 +1,25 @@
 import vscode from "vscode"
 import { initWebviewPanel } from "../../util/webview_panel_util"
 
-let panel: vscode.WebviewPanel | null = null
+class javascript_playground {
+    private panel: vscode.WebviewPanel | null = null
 
-const key = "javascript_playground"
-
-const initPanel = () => {
-    initWebviewPanel(key, "JavaScript Playground", `static/action/${key}.html`)
-}
-
-const showPanel = () => {
-    if (panel === null) {
-        initPanel()
-    }else if (!panel.visible) {
-        panel.reveal()
+    private key = "javascript_playground"
+    
+    private initPanel = () => {
+        initWebviewPanel(this.key, "JavaScript Playground", `static/action/${this.key}.html`)
+    }
+    
+    public showPanel = () => {
+        if (this.panel === null) {
+            this.initPanel()
+        }else if (!this.panel.visible) {
+            this.panel.reveal()
+        }
     }
 }
+const instance = new javascript_playground()
 
 export default {
-    showPanel,
+    showPanel: instance.showPanel,
 }

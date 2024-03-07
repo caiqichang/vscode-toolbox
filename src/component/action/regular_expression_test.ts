@@ -1,22 +1,25 @@
 import vscode from "vscode"
 import { initWebviewPanel } from "../../util/webview_panel_util"
 
-let panel: vscode.WebviewPanel | null = null
+class regular_expression_test {
+    private panel: vscode.WebviewPanel | null = null
 
-const key = "regular_expression_test"
-
-const initPanel = () => {
-    initWebviewPanel(key, "Regular Expression Test", `static/action/${key}.html`)
-}
-
-const showPanel = () => {
-    if (panel === null) {
-        initPanel()
-    }else if (!panel.visible) {
-        panel.reveal()
+    private key = "regular_expression_test"
+    
+    private initPanel = () => {
+        initWebviewPanel(this.key, "Regular Expression Test", `static/action/${this.key}.html`)
+    }
+    
+    public showPanel = () => {
+        if (this.panel === null) {
+            this.initPanel()
+        }else if (!this.panel.visible) {
+            this.panel.reveal()
+        }
     }
 }
+const instance = new regular_expression_test()
 
 export default {
-    showPanel,
+    showPanel: instance.showPanel,
 }
