@@ -17,7 +17,7 @@ or
 ## Usage
 Click the icon on activity bar to open ToolBox, than choose functions to use.
 
-todo: a screenshot here
+![screenshot](resources/screenshot.png)
 
 [Back to top](#features)
 

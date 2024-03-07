@@ -16,6 +16,8 @@ script
 
 tsconfig.json
 
+resources/*.afdesign
+
 !node_modules/@vscode/webview-ui-toolkit/dist/toolkit.min.js
 !node_modules/@vscode/codicons/dist/codicon.css
 !node_modules/@vscode/codicons/dist/codicon.ttf

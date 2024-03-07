@@ -37,7 +37,7 @@
                 {
                     "id": "toolbox_bar",
                     "title": "Toolbox",
-                    "icon": "resources/logo.png"
+                    "icon": "resources/activity_bar_icon.svg"
                 }
             ]
         },
