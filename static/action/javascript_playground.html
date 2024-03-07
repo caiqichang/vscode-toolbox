@@ -26,6 +26,9 @@
                 <div>
                     <vscode-button @click="runAction" class="button-item">Run</vscode-button>
                 </div>
+                <div style="margin-top: 10px;">
+                    <vscode-button @click="exportAction" class="button-item">Export</vscode-button>
+                </div>
             </div>
         </div>
     </div>
@@ -89,6 +92,11 @@
                 },
                 runAction() {
                     Function(this.state.codeText)()
+                },
+                exportAction() {
+                    if (this.state.codeText) {
+                        exportFile(this.state.codeText, "untitled.js")
+                    }
                 },
             }
         })

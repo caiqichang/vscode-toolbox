@@ -11,3 +11,15 @@ const getEditorColorTheme = theme => {
     })[theme];
 }
 
+const exportFile = (content, fileName) => {
+    let i = content.length;
+    let buffer = new Uint8Array(i)
+    while (i--) {
+        buffer[i] = content.charCodeAt(i)
+    }
+
+    let a = document.createElement("a")
+    a.href = URL.createObjectURL(new Blob([buffer], { type: "multipart/example" }))
+    a.download = fileName
+    a.click()
+}

@@ -28,6 +28,9 @@
                 <div style="margin-top: 10px;">
                     <vscode-button @click="zipAction" class="button-item">Compress</vscode-button>
                 </div>
+                <div style="margin-top: 10px;">
+                    <vscode-button @click="exportAction" class="button-item">Export</vscode-button>
+                </div>
             </div>
         </div>
         <div>{{ state.message }}</div>
@@ -100,8 +103,14 @@
                         try {
                             editor.setValue(this.state.xmlText.replace(/\>[\s\r\n]*\</g, "><"))
                         } catch (error) {
+                            console.log(error)
                             this.state.message = error
                         }
+                    }
+                },
+                exportAction() {
+                    if (this.state.xmlText) {
+                        exportFile(this.state.xmlText, "untitled.xml")
                     }
                 },
             }
