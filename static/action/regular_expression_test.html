@@ -55,7 +55,7 @@ not only the very beginning or end of the whole input string.">multiline</vscode
             <div>Result: <span v-html="state.message"></span></div>
             <div v-if="state.groups.length > 0">
                 <div>Groups:</div>
-                <div>
+                <div style="border: 1px solid gray;" class="top5px">
                     <vscode-data-grid aria-label="Basic">
                         <vscode-data-grid-row row-type="header">
                             <vscode-data-grid-cell cell-type="columnheader" grid-column="1">Name</vscode-data-grid-cell>
