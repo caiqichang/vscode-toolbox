@@ -15,7 +15,7 @@ or
 - JavaScript Playground
 
 ## Usage
-Click the icon on activity bar to open ToolBox, than choose functions to use.
+Open the `Explorer` view and expand the `Toolbox` menu, than choose functions to use.
 
 ![screenshot](resources/screenshot.png)
 

@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.2
+- Change toolbox view from activity bar to explorer menu.
+
 ## 1.0.1
 - Fix wrong text.
 - Optimise UI.

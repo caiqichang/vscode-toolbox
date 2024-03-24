@@ -8,9 +8,9 @@ import javascript_playground from "./action/javascript_playground"
 import base64_convertor from "./action/base64_convertor"
 import regular_expression_test from "./action/regular_expression_test"
 
-class ToolboxBarProvider implements vscode.WebviewViewProvider {
+class ToolboxViewProvider implements vscode.WebviewViewProvider {
 
-    public static readonly name = "toolbox_bar_view"
+    public static readonly name = "toolbox_view"
 
     public resolveWebviewView(webviewView: vscode.WebviewView, context: vscode.WebviewViewResolveContext<unknown>, token: vscode.CancellationToken): void | Thenable<void> {
 
@@ -53,5 +53,5 @@ class ToolboxBarProvider implements vscode.WebviewViewProvider {
 }
 
 export {
-    ToolboxBarProvider,
+    ToolboxViewProvider,
 }
