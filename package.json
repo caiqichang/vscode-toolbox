@@ -3,7 +3,7 @@
     "displayName": "Toolbox_",
     "description": "A set of tools for developing.",
     "publisher": "caiqichang",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "engines": {
         "vscode": "^1.87.0"
     },

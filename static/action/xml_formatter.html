@@ -29,6 +29,9 @@
                     <vscode-button @click="zipAction" class="button-item">Compress</vscode-button>
                 </div>
                 <div style="margin-top: 10px;">
+                    <vscode-button @click="wrapAction" class="button-item">{{ state.wrapButton }}</vscode-button>
+                </div>
+                <div style="margin-top: 10px;">
                     <vscode-button @click="exportAction" class="button-item">Export</vscode-button>
                 </div>
             </div>
@@ -53,6 +56,7 @@
                     state: {
                         xmlText: "",
                         message: "",
+                        wrapButton: "Wrap",
                     },
                 }
             },
@@ -77,6 +81,24 @@
                         language: "html",
                         automaticLayout: true,
                         theme: getEditorColorTheme(colorTheme),
+                        bracketPairColorization: {
+                            enabled: true,
+                        },
+                        cursorSmoothCaretAnimation: "on",
+                        dragAndDrop: false,
+                        fontFamily: "'DejaVu Sans Mono'",
+                        guides: {
+                            bracketPairs: true,
+                        },
+                        linkedEditing: true,
+                        minimap: {
+                            showSlider: "always",
+                        },
+                        occurrencesHighlight: "off",
+                        renderLineHighlight: "all",
+                        renderWhitespace: "all",
+                        showFoldingControls: "always",
+                        smoothScrolling: true,
                     })
 
                     editor.onDidChangeModelContent(() => {
@@ -106,6 +128,15 @@
                             console.log(error)
                             this.state.message = error
                         }
+                    }
+                },
+                wrapAction() {
+                    if (this.state.wrapButton === "Wrap") {
+                        editor.updateOptions({wordWrap: true})
+                        this.state.wrapButton = "Unwrap"
+                    }else {
+                        editor.updateOptions({wordWrap: false})
+                        this.state.wrapButton = "Wrap"
                     }
                 },
                 exportAction() {

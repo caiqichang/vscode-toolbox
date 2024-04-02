@@ -73,6 +73,24 @@
                         language: "javascript",
                         automaticLayout: true,
                         theme: getEditorColorTheme(colorTheme),
+                        bracketPairColorization: {
+                            enabled: true,
+                        },
+                        cursorSmoothCaretAnimation: "on",
+                        dragAndDrop: false,
+                        fontFamily: "'DejaVu Sans Mono'",
+                        guides: {
+                            bracketPairs: true,
+                        },
+                        linkedEditing: true,
+                        minimap: {
+                            showSlider: "always",
+                        },
+                        occurrencesHighlight: "off",
+                        renderLineHighlight: "all",
+                        renderWhitespace: "all",
+                        showFoldingControls: "always",
+                        smoothScrolling: true,
                     })
 
                     editor.onDidChangeModelContent(() => {

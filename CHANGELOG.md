@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.3
+- Optimise all editors' style.
+
 ## 1.0.2
 - Change toolbox view from activity bar to explorer menu.
 
