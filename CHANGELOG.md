@@ -1,5 +1,7 @@
 # Change Log
 
+## 1.0.4
+- Add programming languages highlight supports: Kotlin, Mermaid.
 ## 1.0.3
 - Optimise all editors' style.
 

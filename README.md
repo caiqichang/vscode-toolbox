@@ -13,6 +13,9 @@ or
 - XML Formatter
 - Base64 Convertor
 - JavaScript Playground
+- Programming languages highlight supports
+  - Kotlin
+  - Mermaid
 
 ## Usage
 Open the `Explorer` view and expand the `Toolbox` menu, than choose functions to use.

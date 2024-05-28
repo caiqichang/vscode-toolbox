@@ -3,7 +3,7 @@
     "displayName": "Toolbox_",
     "description": "A set of tools for developing.",
     "publisher": "caiqichang",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "engines": {
         "vscode": "^1.87.0"
     },
@@ -40,7 +40,57 @@
                     "type": "webview"
                 }
             ]
-        }
+        },
+        "languages": [
+            {
+                "id": "kotlin",
+                "extensions": [
+                    ".kt",
+                    ".kts"
+                ],
+                "configuration": "./language/kotlin/kotlin-configuration.json"
+            },
+            {
+                "id": "mermaid",
+                "extensions": [
+                    ".mmd",
+                    ".mermaid"
+                ],
+                "configuration": "./language/mermaid/mermaid-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "kotlin",
+                "scopeName": "source.kotlin",
+                "path": "./language/kotlin/kotlin.tmLanguage.json"
+            },
+            {
+                "scopeName": "markdown.kotlin.codeblock",
+                "path": "./language/kotlin/kotlin-codeblock.json",
+                "injectTo": [
+                    "text.html.markdown"
+                ],
+                "embeddedLanguages": {
+                    "meta.embedded.block.kotlin": "kotlin"
+                }
+            },
+            {
+                "language": "mermaid",
+                "scopeName": "source.mermaid",
+                "path": "./language/mermaid/mermaid.tmLanguage.json"
+            },
+            {
+                "scopeName": "markdown.mermaid.codeblock",
+                "path": "./language/mermaid/mermaid-codeblock.json",
+                "injectTo": [
+                    "text.html.markdown"
+                ],
+                "embeddedLanguages": {
+                    "meta.embedded.block.mermaid": "mermaid"
+                }
+            }
+        ]
     },
     "scripts": {
         "prepackage": "node script/pre-package.js && npm run compile",
