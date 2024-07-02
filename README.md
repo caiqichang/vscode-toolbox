@@ -4,8 +4,6 @@ This extension provides a set of useful tools for developing.
 
 Get from 
 [Marketplace](https://marketplace.visualstudio.com/items?itemName=caiqichang.vscode-toolbox) 
-or 
-[OpenVSX](https://open-vsx.org/extension/caiqichang/vscode-toolbox)
 
 ## Features
 - JSON Formatter
